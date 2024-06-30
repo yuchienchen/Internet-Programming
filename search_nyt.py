@@ -12,7 +12,14 @@ def search_articles(search_term):
     return response.json()
 
 def display_results(search_results):
-    print(search_results)
+    # print(search_results)
+    docs = search_results["response"]["docs"]
+
+    for doc in docs:
+        article_web_url = doc["web_url"]
+        article_headline = doc["headline"]["main"]
+
+        print(article_headline + " (" + article_web_url + ")")
 
 while True:
     search_term = input("Your search term: ")
